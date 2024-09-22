@@ -50,7 +50,7 @@ export class HpLambdaStack extends cdk.Stack {
           "npm ci",
           "npx cdk synth",
           "npm run build",
-          "npx cdk synth",
+          `npx cdk synth -c pipeline=${PIPELINE_NAME}`,
         ]
       }),
     });
