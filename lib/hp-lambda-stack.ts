@@ -48,7 +48,6 @@ export class HpLambdaStack extends cdk.Stack {
         input: CodePipelineSource.gitHub(`${githubOrg}/${githubRepo}`, githubBranch),
         commands: [ 
           "npm ci",
-          "npx cdk synth",
           "npm run build",
           `npx cdk synth -c pipeline=${PIPELINE_NAME}`,
         ]
