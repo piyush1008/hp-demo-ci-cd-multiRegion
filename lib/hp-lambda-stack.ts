@@ -54,7 +54,6 @@ export class HpLambdaStack extends cdk.Stack {
       }),
     });
 
-
     return pipeline;
   }
 
