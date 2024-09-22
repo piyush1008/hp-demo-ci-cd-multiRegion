@@ -2,20 +2,35 @@
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { HpLambdaStack } from '../lib/hp-lambda-stack';
+import { AppConfig } from '../config/config';
 
 const app = new cdk.App();
-new HpLambdaStack(app, 'HpLambdaStack', {
-  /* If you don't specify 'env', this stack will be environment-agnostic.
-   * Account/Region-dependent features and context lookups will not work,
-   * but a single synthesized template can be deployed anywhere. */
+const pipeline = app.node.tryGetContext('pipeline');
 
-  /* Uncomment the next line to specialize this stack for the AWS Account
-   * and Region that are implied by the current CLI configuration. */
-  // env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+function buildStack(){
 
-  /* Uncomment the next line if you know exactly what Account and Region you
-   * want to deploy the stack to. */
-  // env: { account: '123456789012', region: 'us-east-1' },
+  if (!pipeline) {
+    throw new Error(`could not find pipeline context did you forget to add -c to your deploy command?`);
+  }
 
-  /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
-});
+  switch(pipeline)
+  {
+     case "dev":
+       new HpLambdaStack(app, 'hp-lambda-dev',"dev", AppConfig.hpdemoDev );
+       break;
+     case "prod":
+      //  new HpLambdaStack(app, 'hp-lambda-prod', { env: { region:"us-east-1"}});
+       break;
+
+  }
+
+
+  
+
+
+}
+
+
+
+
+buildStack();
