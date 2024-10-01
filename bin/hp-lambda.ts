@@ -13,6 +13,7 @@ function buildStack(){
     throw new Error(`could not find pipeline context did you forget to add -c to your deploy command?`);
   }
 
+  
   switch(pipeline)
   {
      case "dev":

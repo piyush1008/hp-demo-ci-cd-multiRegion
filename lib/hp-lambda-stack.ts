@@ -56,6 +56,7 @@ export class HpLambdaStack extends cdk.Stack {
 
     return pipeline;
   }
+  
 
   public createStage(pipeline:CodePipeline)
   {
