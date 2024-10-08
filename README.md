@@ -16,6 +16,8 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 ## Architecture of the project
 
 
+![Open the imaage ](image.png)
+
 
 
 
@@ -36,3 +38,5 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
     -> cdk deploy --all -c pipeline=<branchName>
 
     You would have to run this command twice with different branch name [say "dev" and "prod"]
+
+
